@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Calendar, MapPin, Users, DollarSign, Clock, CheckCircle, XCircle } from 'lucide-react';
-import { supabase, Booking } from '../lib/supabase';
+import api from '../lib/api';
+import { Booking } from '../lib/types';
 import { useAuth } from '../contexts/AuthContext';
 
 interface MyBookingsProps {
@@ -23,16 +24,7 @@ export function MyBookings({ isOpen, onClose }: MyBookingsProps) {
     if (!user) return;
 
     try {
-      const { data, error } = await supabase
-        .from('bookings')
-        .select(`
-          *,
-          room:rooms(*)
-        `)
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
+      const data = await api.bookings.listForUser();
       setBookings(data || []);
     } catch (error) {
       console.error('Error fetching bookings:', error);
@@ -43,12 +35,7 @@ export function MyBookings({ isOpen, onClose }: MyBookingsProps) {
 
   const cancelBooking = async (bookingId: string) => {
     try {
-      const { error } = await supabase
-        .from('bookings')
-        .update({ status: 'cancelled' })
-        .eq('id', bookingId);
-
-      if (error) throw error;
+      await api.bookings.cancel(bookingId);
       fetchBookings();
     } catch (error) {
       console.error('Error cancelling booking:', error);

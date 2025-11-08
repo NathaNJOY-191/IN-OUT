@@ -1,8 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, Calendar, Users, DollarSign, FileText } from 'lucide-react';
-import { Room } from '../lib/supabase';
-import { supabase } from '../lib/supabase';
+import { Room } from '../lib/types';
+import api from '../lib/api';
 import { useAuth } from '../contexts/AuthContext';
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -20,15 +26,25 @@ export function BookingModal({ isOpen, onClose, room, onSuccess }: BookingModalP
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  if (!isOpen || !room) return null;
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const calculateTotalPrice = () => {
-    if (!checkIn || !checkOut) return 0;
+    if (!checkIn || !checkOut || !room) return 0;
     const days = Math.ceil(
       (new Date(checkOut).getTime() - new Date(checkIn).getTime()) / (1000 * 60 * 60 * 24)
     );
     return days > 0 ? days * room.price_per_night : 0;
   };
+
+  if (!isOpen || !room) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +66,8 @@ export function BookingModal({ isOpen, onClose, room, onSuccess }: BookingModalP
     try {
       const totalPrice = calculateTotalPrice();
 
-      const { error: bookingError } = await supabase.from('bookings').insert({
+      // Create booking first
+      const bookingResponse = await api.bookings.create({
         user_id: user.id,
         room_id: room.id,
         check_in_date: checkIn,
@@ -58,17 +75,51 @@ export function BookingModal({ isOpen, onClose, room, onSuccess }: BookingModalP
         num_guests: numGuests,
         total_price: totalPrice,
         special_requests: specialRequests || null,
-        status: 'confirmed',
+        status: 'pending',
       });
 
-      if (bookingError) throw bookingError;
+      // Create Razorpay order
+      const orderData = await api.payments.createOrder(totalPrice);
 
-      onSuccess();
-      onClose();
-      setCheckIn('');
-      setCheckOut('');
-      setNumGuests(1);
-      setSpecialRequests('');
+      // Initialize Razorpay payment
+      const options = {
+        key: 'rzp_test_RdEbrAgSxi8vul', // Using the test key from server
+        amount: orderData.amount,
+        currency: 'INR',
+        name: 'IN&OUT Stays',
+        description: `Booking for ${room.name}`,
+        order_id: orderData.id,
+        handler: async (response: any) => {
+          try {
+            // Verify payment
+            await api.payments.verifyPayment({
+              bookingId: bookingResponse.id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
+            });
+
+            onSuccess();
+            onClose();
+            setCheckIn('');
+            setCheckOut('');
+            setNumGuests(1);
+            setSpecialRequests('');
+          } catch (err) {
+            setError('Payment verification failed');
+          }
+        },
+        prefill: {
+          name: user.full_name,
+          email: user.email,
+        },
+        theme: {
+          color: '#059669',
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
     } catch (err: any) {
       setError(err.message || 'Failed to create booking');
     } finally {

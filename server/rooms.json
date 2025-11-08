@@ -1,0 +1,204 @@
+{
+  "rooms": [
+    {
+      "name": "Ocean View Suite",
+      "type": "suite",
+      "description": "Spacious suite with ocean view",
+      "price_per_night": 299,
+      "max_guests": 4,
+      "amenities": ["WiFi", "Smart TV", "Coffee Maker"],
+      "image_url": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Cozy Single Room",
+      "type": "single",
+      "description": "Comfortable single room for solo travelers",
+      "price_per_night": 79,
+      "max_guests": 1,
+      "amenities": ["WiFi", "TV"],
+      "image_url": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Mountain View Suite",
+      "type": "suite",
+      "description": "Luxurious suite with stunning mountain views",
+      "price_per_night": 349,
+      "max_guests": 4,
+      "amenities": ["WiFi", "Smart TV", "Mini Bar", "Balcony"],
+      "image_url": "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Family Room",
+      "type": "family",
+      "description": "Spacious room perfect for families",
+      "price_per_night": 199,
+      "max_guests": 6,
+      "amenities": ["WiFi", "TV", "Mini Kitchen", "Play Area"],
+      "image_url": "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Business Suite",
+      "type": "suite",
+      "description": "Perfect for business travelers with work desk",
+      "price_per_night": 259,
+      "max_guests": 2,
+      "amenities": ["WiFi", "Work Desk", "Coffee Maker", "Printer Access"],
+      "image_url": "https://images.pexels.com/photos/271620/pexels-photo-271620.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Deluxe King Room",
+      "type": "deluxe",
+      "description": "Elegant room with a king-size bed and city view",
+      "price_per_night": 159,
+      "max_guests": 2,
+      "amenities": ["WiFi", "Smart TV", "Mini Bar", "Air Conditioning"],
+      "image_url": "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Family Suite",
+      "type": "suite",
+      "description": "Spacious suite perfect for families with two bedrooms",
+      "price_per_night": 229,
+      "max_guests": 5,
+      "amenities": ["WiFi", "Kitchenette", "Smart TV", "Coffee Maker"],
+      "image_url": "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Executive Room",
+      "type": "executive",
+      "description": "Premium room for business travelers with workspace and fast WiFi",
+      "price_per_night": 189,
+      "max_guests": 2,
+      "amenities": ["WiFi", "Smart TV", "Desk", "Mini Bar"],
+      "image_url": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Mountain View Room",
+      "type": "deluxe",
+      "description": "Relaxing room with scenic mountain view",
+      "price_per_night": 175,
+      "max_guests": 3,
+      "amenities": ["WiFi", "Balcony", "Smart TV", "Coffee Maker"],
+      "image_url": "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Standard Twin Room",
+      "type": "twin",
+      "description": "Simple and affordable room with twin beds",
+      "price_per_night": 99,
+      "max_guests": 2,
+      "amenities": ["WiFi", "TV"],
+      "image_url": "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Luxury Penthouse Suite",
+      "type": "suite",
+      "description": "Top-floor suite with panoramic views and private balcony",
+      "price_per_night": 499,
+      "max_guests": 4,
+      "amenities": ["WiFi", "Jacuzzi", "Private Bar", "Smart TV"],
+      "image_url": "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Garden View Room",
+      "type": "standard",
+      "description": "Peaceful room overlooking the hotel garden",
+      "price_per_night": 129,
+      "max_guests": 2,
+      "amenities": ["WiFi", "Smart TV", "Mini Fridge"],
+      "image_url": "https://images.pexels.com/photos/271648/pexels-photo-271648.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Budget Single Room",
+      "type": "single",
+      "description": "Affordable stay for solo travelers with basic amenities",
+      "price_per_night": 69,
+      "max_guests": 1,
+      "amenities": ["WiFi", "TV"],
+      "image_url": "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Presidential Suite",
+      "type": "suite",
+      "description": "Luxurious suite with private lounge and dining area",
+      "price_per_night": 699,
+      "max_guests": 6,
+      "amenities": ["WiFi", "Jacuzzi", "Private Lounge", "Smart TV", "Coffee Maker"],
+      "image_url": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Poolside Room",
+      "type": "deluxe",
+      "description": "Room with direct access to swimming pool area",
+      "price_per_night": 189,
+      "max_guests": 3,
+      "amenities": ["WiFi", "Smart TV", "Mini Bar", "Pool Access"],
+      "image_url": "https://images.pexels.com/photos/26139/pexels-photo.jpg",
+      "is_available": true
+    },
+    {
+      "name": "Honeymoon Suite",
+      "type": "suite",
+      "description": "Romantic suite ideal for couples with luxurious interiors",
+      "price_per_night": 279,
+      "max_guests": 2,
+      "amenities": ["WiFi", "Jacuzzi", "Smart TV", "Mini Bar"],
+      "image_url": "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Studio Apartment Room",
+      "type": "apartment",
+      "description": "Self-contained studio with kitchen and work area",
+      "price_per_night": 199,
+      "max_guests": 3,
+      "amenities": ["WiFi", "Smart TV", "Kitchen", "Washing Machine"],
+      "image_url": "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Heritage Room",
+      "type": "deluxe",
+      "description": "Classic heritage-style room with antique décor",
+      "price_per_night": 149,
+      "max_guests": 2,
+      "amenities": ["WiFi", "Air Conditioning", "Smart TV"],
+      "image_url": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Skyline View Suite",
+      "type": "suite",
+      "description": "Modern suite with breathtaking skyline view",
+      "price_per_night": 329,
+      "max_guests": 3,
+      "amenities": ["WiFi", "Smart TV", "Mini Bar", "Private Balcony"],
+      "image_url": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+      "is_available": true
+    },
+    {
+      "name": "Eco Green Room",
+      "type": "standard",
+      "description": "Eco-friendly room with sustainable design and amenities",
+      "price_per_night": 139,
+      "max_guests": 2,
+      "amenities": ["WiFi", "Smart TV", "Air Purifier"],
+      "image_url": "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+      "is_available": true
+    }
+  ]
+}

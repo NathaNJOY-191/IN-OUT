@@ -6,7 +6,8 @@ import { RoomCard } from './components/RoomCard';
 import { AuthModal } from './components/AuthModal';
 import { BookingModal } from './components/BookingModal';
 import { MyBookings } from './components/MyBookings';
-import { supabase, Room } from './lib/supabase';
+import api from './lib/api';
+import { Room } from './lib/types';
 import { Sparkles } from 'lucide-react';
 
 function AppContent() {
@@ -32,12 +33,7 @@ function AppContent() {
 
   const fetchRooms = async () => {
     try {
-      const { data, error } = await supabase
-        .from('rooms')
-        .select('*')
-        .order('price_per_night', { ascending: true });
-
-      if (error) throw error;
+      const data = await api.rooms.list();
       setRooms(data || []);
     } catch (error) {
       console.error('Error fetching rooms:', error);
@@ -147,7 +143,7 @@ function AppContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-gray-600">
             <p className="font-semibold text-lg bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">
-              LuxStay Hotels
+              IN&OUT
             </p>
             <p className="text-sm">Premium accommodations for unforgettable experiences</p>
           </div>
