@@ -8,7 +8,7 @@ const Razorpay = require('razorpay');
 
 const app = express();
 app.use(cors({
-  origin: ['https://in-e5oo6ee48-nathans-projects-c7cadc7a.vercel.app', 'http://localhost:5173'],
+  origin: ['https://in-out-stays.netlify.app', 'http://localhost:5173'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
