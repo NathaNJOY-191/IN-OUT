@@ -2,14 +2,20 @@ services:
   - type: web
     name: in-out-backend
     env: node
+    region: singapore
+    plan: free
     buildCommand: npm install
-    startCommand: node index.js
+    startCommand: npm start
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: MONGODB_URI
-        value: mongodb+srv://joy123:joy123@cluster0.db75ghr.mongodb.net/in-out?retryWrites=true&w=majority
+        sync: false
       - key: JWT_SECRET
-        value: "168ca8e08e5ebaf23b210089b71fb914c7aaa968471ad4124db85c8f31724ebb"
+        sync: false
       - key: RAZORPAY_KEY_ID
-        value: "rzp_test_RdEbrAgSxi8vul"
+        sync: false
       - key: RAZORPAY_KEY_SECRET
-        value: "qC9iRGDdBqWWo6Bo7AivZp4Z"
+        sync: false
+      - key: PORT
+        value: 4000
